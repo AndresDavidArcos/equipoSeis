@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             >
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:menu="@menu/top_app_bar"
@@ -72,6 +73,19 @@
         android:textSize="30dp"
         android:textStyle="bold"
         />
+        <TextView
+            android:id="@+id/countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="90sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@+id/botella"
+            app:layout_constraintBottom_toBottomOf="@+id/botella"
+            app:layout_constraintLeft_toLeftOf="@+id/botella"
+            app:layout_constraintRight_toRightOf="@+id/botella"
+            tools:text="3"
+            />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
