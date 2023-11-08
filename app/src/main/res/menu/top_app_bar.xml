@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/favorite"
+        android:title="favorite"
+        android:icon="@drawable/star"
+        app:showAsAction="always"
+        android:iconTint="@color/orange"
+
+        />
+    <item
+        android:id="@+id/sound"
+        android:title="sound"
+        android:icon="@drawable/sound_on"
+        app:showAsAction="always"
+        android:iconTint="@color/orange"
+
+        />
+    <item
+        android:id="@+id/game"
+        android:title="game"
+        android:icon="@drawable/game"
+        app:showAsAction="always"
+        android:iconTint="@color/orange"
+        />
+    <item
+        android:id="@+id/add"
+        android:title="add"
+        android:iconTint="@color/orange"
+
+        android:icon="@drawable/addround"
+        app:showAsAction="always"
+
+        />
+    <item
+        android:id="@+id/share"
+        android:title="share"
+        android:icon="@drawable/share"
+        app:showAsAction="always"
+        android:iconTint="@color/orange"
+
+        />
+</menu>
