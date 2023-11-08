@@ -3,9 +3,11 @@ package com.example.picobotellaequipo6.view
 import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.Animation
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private var currentRotation = 0f
     private var isAnimating = false
     private var soundIsOn = false;
+    private var url = "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es";
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +59,13 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
+
+                R.id.favorite -> {
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse(url)
+                    startActivity(i)
+                }
+
             }
 
             true
