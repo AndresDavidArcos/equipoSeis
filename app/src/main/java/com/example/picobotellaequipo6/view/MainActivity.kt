@@ -12,10 +12,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
-import android.view.animation.ScaleAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import androidx.core.content.ContextCompat
 import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -66,6 +64,13 @@ class MainActivity : AppCompatActivity() {
                     startActivity(i)
                 }
 
+                R.id.share -> {
+                    val text = "Oye, prueba esta increíble aplicación\n\n$url";
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type = "text/plain"
+                    intent.putExtra(Intent.EXTRA_TEXT, text)
+                    startActivity(Intent.createChooser(intent, "Compartir enlace"))
+                }
             }
 
             true
