@@ -12,8 +12,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -62,6 +65,14 @@ class MainActivity : AppCompatActivity() {
                     val i = Intent(Intent.ACTION_VIEW)
                     i.data = Uri.parse(url)
                     startActivity(i)
+                }
+                R.id.add -> {
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        add<Retos>(R.id.addContainer)
+                    }
+                    Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
+
                 }
 
                 R.id.share -> {
