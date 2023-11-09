@@ -10,10 +10,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
-import android.view.animation.ScaleAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import androidx.core.content.ContextCompat
 import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -43,12 +41,10 @@ class MainActivity : AppCompatActivity() {
                     R.id.sound -> {
 
                     if(soundIsOn){
-                        Log.i("sound", "entra")
                         item.setIcon(R.drawable.sound_off)
                         mediaPlayer.setVolume(0.0f, 0.0f)
                         soundIsOn = false;
                     }else{
-                        Log.i("sound", "sale")
 
                         item.setIcon(R.drawable.sound_on)
                         mediaPlayer.setVolume(1.0f, 1.0f)
