@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.picobotellaequipo6"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.picobotellaequipo6"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -46,6 +46,7 @@ android {
 
 dependencies {
 
+    val navVersion = "2.7.3"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -55,7 +56,20 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //toolbar
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    //navigation
+    implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-common:$navVersion")
+
+    //cardView
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    //glide library
+    implementation ("com.github.bumptech.glide:glide:4.14.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.1")
 }

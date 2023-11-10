@@ -11,9 +11,11 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/brigthness_black"
+            android:clickable="true"
             app:navigationIcon="@drawable/arrow_back"
             app:title="Reglas de juego"
             app:theme="@style/toolbarTheme">

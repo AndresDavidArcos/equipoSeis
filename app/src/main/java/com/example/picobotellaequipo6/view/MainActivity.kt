@@ -26,6 +26,13 @@ class MainActivity : AppCompatActivity() {
         blinkingBtnEffect()
         rotationBottleEffect()
         rotateBottle()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        val toolbar = binding.contentToolbar.toolbar
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener {onBackPressed()}
     }
 
     fun getRandomDirection(): Int {
