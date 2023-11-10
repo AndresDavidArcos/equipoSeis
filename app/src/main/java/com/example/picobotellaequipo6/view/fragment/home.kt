@@ -88,6 +88,10 @@ class home : Fragment() {
                     intent.putExtra(Intent.EXTRA_TEXT, text)
                     startActivity(Intent.createChooser(intent, "Compartir enlace"))
                 }
+                R.id.game -> {
+                    Log.i("nav", "entro")
+                    findNavController().navigate(R.id.action_home2_to_instruction)
+                }
 
             }
 

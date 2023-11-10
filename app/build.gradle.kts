@@ -38,6 +38,10 @@ android {
     viewBinding {
         enable = true
     }
+
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -47,6 +51,14 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation("androidx.navigation:navigation-common:$navVersion")
+
+    //toolbar
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    //cardView
+    implementation("androidx.cardview:cardview:1.0.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

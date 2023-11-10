@@ -18,4 +18,20 @@
         android:name="com.example.picobotellaequipo6.view.fragment.addChallenge"
         android:label="fragment_add_challenge"
         tools:layout="@layout/fragment_add_challenge" />
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.picobotellaequipo6.view.fragment.home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home"
+        tools:ignore="DuplicateIds">
+        <action
+            android:id="@+id/action_home2_to_instruction"
+            app:destination="@id/instruction" />
+    </fragment>
+    <fragment
+        android:id="@+id/instruction"
+        android:name="com.example.picobotellaequipo6.view.instruction"
+        android:label="fragment_instruction"
+        tools:layout="@layout/fragment_instruction">
+    </fragment>
 </navigation>
