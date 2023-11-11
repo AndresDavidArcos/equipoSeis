@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.ActivityMainBinding
 import com.example.picobotellaequipo6.view.fragment.home
+import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val gifView = binding.gifImageView
+        Glide.with(this).asGif().load(com.example.picobotellaequipo6.R.drawable.splash_gif).into(gifView)
 
         // Configurar el temporizador para reemplazar SplashFragment con HomeFragment después de SPLASH_DISPLAY_TIME
         Handler(Looper.getMainLooper()).postDelayed({
