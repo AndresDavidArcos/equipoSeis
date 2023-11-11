@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar el temporizador para reemplazar SplashFragment con HomeFragment después de SPLASH_DISPLAY_TIME
         Handler(Looper.getMainLooper()).postDelayed({
-            if (supportFragmentManager.findFragmentByTag(home::class.java.simpleName) == null) {
-                showHomeFragment()
-            }
+            showHomeFragment()
         }, SPLASH_DISPLAY_TIME)
     }
 
@@ -30,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         val homeFragment = home()
 
-        // Reemplaza R.id.parent_constraint_layout con el ID real de tu ConstraintLayout en fragment_home.xml
         transaction.replace(R.id.parent_constraint_layout, homeFragment, home::class.java.simpleName)
         transaction.addToBackStack(null)
         transaction.commit()
