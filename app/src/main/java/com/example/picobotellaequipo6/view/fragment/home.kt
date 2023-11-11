@@ -52,6 +52,8 @@ class home : Fragment() {
         super.onDestroyView()
         mediaPlayer.stop()
         mediaPlayer.release()
+        // Cerrar la aplicación cuando se presiona el botón de retroceso en el fragmento "home"
+        requireActivity().finish();
     }
 
     private fun toolBarListeners() {
