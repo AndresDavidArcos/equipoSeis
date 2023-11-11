@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.ActivityMainBinding
-import com.example.picobotellaequipo6.view.fragment.SplashWindow
 import com.example.picobotellaequipo6.view.fragment.home
 
 class MainActivity : AppCompatActivity() {
@@ -22,19 +18,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mostrar el fragmento de splash al inicio
-        showFragment(SplashWindow())
-
         // Configurar el temporizador para reemplazar SplashFragment con HomeFragment después de SPLASH_DISPLAY_TIME
         Handler(Looper.getMainLooper()).postDelayed({
-            showFragment(home())
+            if (supportFragmentManager.findFragmentByTag(home::class.java.simpleName) == null) {
+                showHomeFragment()
+            }
         }, SPLASH_DISPLAY_TIME)
     }
 
-    private fun showFragment(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
-        fragmentTransaction.commit()
+    private fun showHomeFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        val homeFragment = home()
+
+        // Reemplaza R.id.parent_constraint_layout con el ID real de tu ConstraintLayout en fragment_home.xml
+        transaction.replace(R.id.parent_constraint_layout, homeFragment, home::class.java.simpleName)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
