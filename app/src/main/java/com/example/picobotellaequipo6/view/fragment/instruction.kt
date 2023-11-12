@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.picobotellaequipo6.databinding.FragmentInstructionBinding
+import com.bumptech.glide.Glide
 
 class Instruction : Fragment() {
 
@@ -20,6 +21,12 @@ class Instruction : Fragment() {
         binding.lifecycleOwner = this
         return binding.root
     }
+
+    val gifView = binding.ganadorGifInstruction
+    //Glide.with(this).asGif().load(com.example.picobotellaequipo6.R.drawable.ganador_gif).into(gifView)
+
+    //val gifView = binding.gifImageView
+    //Glide.with(this).asGif().load(com.example.picobotellaequipo6.R.drawable.splash_gif).into(gifView)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
