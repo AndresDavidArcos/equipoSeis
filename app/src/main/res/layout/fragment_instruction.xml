@@ -72,9 +72,9 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <ImageView
-            android:id="@+id/ganador_gif"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/ganarGif"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
             android:src="@drawable/ganador_gif"
             android:scaleType="centerCrop"
             android:layout_marginTop="40dp"

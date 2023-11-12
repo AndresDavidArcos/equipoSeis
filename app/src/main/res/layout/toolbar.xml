@@ -15,7 +15,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/brigthness_black"
-                app:title="Reglas de juego"
                 app:theme="@style/toolbarTheme">
 
                 <ImageView
@@ -24,10 +23,20 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_back"
                     android:clickable="true"
-                    android:layout_gravity="end"
+                    android:layout_gravity="start"
                     android:padding="2dp"
                     android:layout_marginEnd="15dp"
                     android:background="?selectableItemBackgroundBorderless" />
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/reglas_de_juego"
+                    android:textColor="@color/dark_orange"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
             </androidx.appcompat.widget.Toolbar>
