@@ -5,29 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.picobotellaequipo6.R
-import com.example.picobotellaequipo6.databinding.ActivityMainBinding
+import androidx.navigation.fragment.findNavController
+import com.example.picobotellaequipo6.databinding.FragmentInstructionBinding
 
-class instruction : Fragment() {
+class Instruction : Fragment() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: FragmentInstructionBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setupToolbar()
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentInstructionBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    private fun setupToolbar() {
-        TODO("Not yet implemented")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        controladores()
     }
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_instruction, container, false)
+    private fun controladores() {
+        //binding.contentToolbar.toolbar.back_toolbar.setOnClickListener { findNavController().popBackStack() }
+        binding.contentToolbar.backToolbar.setOnClickListener{ findNavController().popBackStack() }
     }
 
 }

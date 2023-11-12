@@ -15,10 +15,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/brigthness_black"
-                android:clickable="true"
-                app:navigationIcon="@drawable/ic_back"
                 app:title="Reglas de juego"
                 app:theme="@style/toolbarTheme">
+
+                <ImageView
+                    android:id="@+id/back_toolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back"
+                    android:clickable="true"
+                    android:layout_gravity="end"
+                    android:padding="2dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="?selectableItemBackgroundBorderless" />
+
 
             </androidx.appcompat.widget.Toolbar>
 

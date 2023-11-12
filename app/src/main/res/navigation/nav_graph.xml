@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/instruction"
-        android:name="com.example.picobotellaequipo6.view.instruction"
+        android:name="com.example.picobotellaequipo6.view.Instruction"
         android:label="fragment_instruction"
         tools:layout="@layout/fragment_instruction">
     </fragment>
