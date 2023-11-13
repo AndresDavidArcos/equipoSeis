@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -29,8 +30,8 @@ class home : Fragment() {
     private lateinit var spinningMediaPlayer: MediaPlayer
     private var currentRotation = 0f
     private var isAnimating = false
-    private var soundIsOn = false;
-    private var url = "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es";
+    private var soundIsOn = false
+    private var url = "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,11 +63,11 @@ class home : Fragment() {
                     if(soundIsOn){
                         item.setIcon(R.drawable.sound_off)
                         mediaPlayer.setVolume(0.0f, 0.0f)
-                        soundIsOn = false;
+                        soundIsOn = false
                     }else{
                         item.setIcon(R.drawable.sound_on)
                         mediaPlayer.setVolume(1.0f, 1.0f)
-                        soundIsOn = true;
+                        soundIsOn = true
 
                     }
                 }
@@ -81,11 +82,14 @@ class home : Fragment() {
                 }
 
                 R.id.share -> {
-                    val text = "Oye, prueba esta increíble aplicación\n\n$url";
+                    val text = "Oye, prueba esta increíble aplicación\n\n$url"
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.type = "text/plain"
                     intent.putExtra(Intent.EXTRA_TEXT, text)
                     startActivity(Intent.createChooser(intent, "Compartir enlace"))
+                }
+                R.id.add -> {
+                    findNavController().navigate(R.id.action_home2_to_challenges2)
                 }
 
             }

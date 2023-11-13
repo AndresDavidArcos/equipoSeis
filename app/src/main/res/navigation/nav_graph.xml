@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_home2_to_instructions"
             app:destination="@id/instructions" />
+        <action
+            android:id="@+id/action_home2_to_challenges2"
+            app:destination="@id/challenges2" />
     </fragment>
     <fragment
         android:id="@+id/instructions"
         android:name="com.example.picobotellaequipo6.view.fragment.instructions"
         android:label="fragment_instructions"
         tools:layout="@layout/fragment_instructions" />
+    <fragment
+        android:id="@+id/challenges2"
+        android:name="com.example.picobotellaequipo6.view.fragment.challenges"
+        android:label="fragment_challenges"
+        tools:layout="@layout/fragment_challenges" />
 </navigation>
