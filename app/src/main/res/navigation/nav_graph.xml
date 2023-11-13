@@ -10,28 +10,20 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_home2_to_addChallenge"
-            app:destination="@id/addChallenge" />
-    </fragment>
-    <fragment
-        android:id="@+id/addChallenge"
-        android:name="com.example.picobotellaequipo6.view.fragment.addChallenge"
-        android:label="fragment_add_challenge"
-        tools:layout="@layout/fragment_add_challenge" />
-    <fragment
-        android:id="@+id/home2"
-        android:name="com.example.picobotellaequipo6.view.fragment.home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home"
-        tools:ignore="DuplicateIds">
+            android:id="@+id/action_home2_to_instructions"
+            app:destination="@id/instructions" />
         <action
-            android:id="@+id/action_home2_to_instruction"
-            app:destination="@id/instruction" />
+            android:id="@+id/action_home2_to_challenges2"
+            app:destination="@id/challenges2" />
     </fragment>
     <fragment
-        android:id="@+id/instruction"
-        android:name="com.example.picobotellaequipo6.view.Instruction"
-        android:label="fragment_instruction"
-        tools:layout="@layout/fragment_instruction">
-    </fragment>
+        android:id="@+id/instructions"
+        android:name="com.example.picobotellaequipo6.view.fragment.instructions"
+        android:label="fragment_instructions"
+        tools:layout="@layout/fragment_instructions" />
+    <fragment
+        android:id="@+id/challenges2"
+        android:name="com.example.picobotellaequipo6.view.fragment.challenges"
+        android:label="fragment_challenges"
+        tools:layout="@layout/fragment_challenges" />
 </navigation>

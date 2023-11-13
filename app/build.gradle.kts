@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.picobotellaequipo6"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.picobotellaequipo6"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -39,8 +39,8 @@ android {
         enable = true
     }
 
-    buildFeatures{
-        dataBinding = true
+    dataBinding {
+        enable = true
     }
 }
 
@@ -51,14 +51,6 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation("androidx.navigation:navigation-common:$navVersion")
-
-    //toolbar
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
-    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-
-    //cardView
-    implementation("androidx.cardview:cardview:1.0.0")
 
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -71,10 +63,4 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    kapt("com.github.bumptech.glide:compiler:4.16.0")
-
-    implementation ("com.google.android.material:material:1.3.0")
-
 }
