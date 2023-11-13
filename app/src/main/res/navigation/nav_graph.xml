@@ -10,12 +10,12 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_home2_to_addChallenge"
-            app:destination="@id/addChallenge" />
+            android:id="@+id/action_home2_to_instructions"
+            app:destination="@id/instructions" />
     </fragment>
     <fragment
-        android:id="@+id/addChallenge"
-        android:name="com.example.picobotellaequipo6.view.fragment.addChallenge"
-        android:label="fragment_add_challenge"
-        tools:layout="@layout/fragment_add_challenge" />
+        android:id="@+id/instructions"
+        android:name="com.example.picobotellaequipo6.view.fragment.instructions"
+        android:label="fragment_instructions"
+        tools:layout="@layout/fragment_instructions" />
 </navigation>

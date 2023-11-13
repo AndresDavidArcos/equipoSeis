@@ -70,9 +70,8 @@ class home : Fragment() {
 
                     }
                 }
-                R.id.add -> {
-                    Log.i("nav", "entro")
-                    findNavController().navigate(R.id.action_home2_to_addChallenge)
+                R.id.game -> {
+                    findNavController().navigate(R.id.action_home2_to_instructions)
                 }
 
                 R.id.favorite -> {
