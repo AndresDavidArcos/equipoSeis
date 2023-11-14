@@ -2,6 +2,7 @@ package com.example.picobotellaequipo6.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.picobotellaequipo6.databinding.ChallengesInventoryBinding
 import com.example.picobotellaequipo6.model.Challenges

@@ -1,5 +1,6 @@
 package com.example.picobotellaequipo6.view.viewholder
 
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.picobotellaequipo6.databinding.ChallengesInventoryBinding
 import com.example.picobotellaequipo6.model.Challenges
