@@ -31,7 +31,7 @@
 
             <!-- Caja de texto -->
             <EditText
-                android:id="@+id/retoEditText"
+                android:id="@+id/etChallengeName"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_margin="16dp"
@@ -42,7 +42,7 @@
             <RelativeLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/retoEditText"
+                android:layout_below="@id/etChallengeName"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
                 android:layout_marginTop="35dp"
@@ -51,7 +51,7 @@
                 android:layout_marginBottom="16dp">
 
                 <Button
-                    android:id="@+id/cancelButton"
+                    android:id="@+id/btnCancel"
                     android:layout_width="120dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="60dp"
@@ -61,10 +61,10 @@
                     android:textAllCaps="false"/>
 
                 <Button
-                    android:id="@+id/saveButton"
+                    android:id="@+id/btnSaveChallenge"
                     android:layout_width="120dp"
                     android:layout_height="60dp"
-                    android:layout_toEndOf="@id/cancelButton"
+                    android:layout_toEndOf="@id/btnCancel"
                     android:layout_alignParentRight="true"
                     android:text="Guardar"
                     android:backgroundTint="@color/button_text_color"

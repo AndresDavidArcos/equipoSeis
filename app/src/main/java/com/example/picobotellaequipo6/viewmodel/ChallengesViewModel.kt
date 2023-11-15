@@ -28,4 +28,9 @@ class ChallengesViewModel(application: Application):AndroidViewModel(application
 
         }
     }
+    fun updateChallenge(challenge: Challenges){
+        viewModelScope.launch {
+            challengesRepository.updateRepositoy(challenge)
+        }
+    }
 }
