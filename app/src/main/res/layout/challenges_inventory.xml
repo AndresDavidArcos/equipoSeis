@@ -55,6 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit_challenge"
+                    android:layout_marginEnd="20dp"
                     card_view:layout_constraintTop_toTopOf="parent"
                     card_view:layout_constraintEnd_toStartOf="@+id/delete_challenge"
                     android:contentDescription="Editar" />
