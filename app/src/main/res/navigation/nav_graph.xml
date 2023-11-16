@@ -3,27 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-<<<<<<< HEAD
-    app:startDestination="@id/splash">
-    <fragment
-        android:id="@+id/splash"
-        android:name="com.example.picobotellaequipo6.view.fragment.home"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splash_to_home2"
-            app:destination="@id/home2" />
-    </fragment>
-=======
-    app:startDestination="@id/mainActivity">
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.picobotellaequipo6.view.MainActivity">
-        <action
-            android:id="@+id/action_mainActivity_to_fragmentHome"
-            app:destination="@id/home2" />
-    </activity>
->>>>>>> a1da7d4eed674a84a0be63edf17941f92f098315
+    app:startDestination="@id/home2">
     <fragment
         android:id="@+id/home2"
         android:name="com.example.picobotellaequipo6.view.fragment.home"
