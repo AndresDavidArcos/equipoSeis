@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
+import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.DialogLayoutDeleteChallengeBinding
 
 class DialogDeleteChallenge : DialogFragment() {
@@ -21,11 +23,14 @@ class DialogDeleteChallenge : DialogFragment() {
         builder.setView(binding.root)
 
         binding.tvSI.setOnClickListener {
-            //falta el navigate
-            //falta logica de BD
+            //falta logica de BD (eliminar reto)
+
+            //navigate
+            findNavController().navigate(R.id.action_dialogDeleteChallenge_to_challenges2)
         }
         binding.tvNO.setOnClickListener {
-            //falta el navigate
+            //navigate
+            findNavController().navigate(R.id.action_dialogDeleteChallenge_to_challenges2)
         }
 
         val dialog = builder.create()
