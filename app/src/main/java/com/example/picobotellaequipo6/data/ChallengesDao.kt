@@ -10,5 +10,5 @@ interface ChallengesDao {
     @Query("SELECT * FROM Challenges")
     suspend fun getListInventory(): MutableList<Challenges>
     @Update
-    suspend fun updateInventory(challenge: Challenges)
+    suspend fun updateChallenge(challenge: Challenges)
 }

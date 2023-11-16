@@ -17,7 +17,7 @@ class ChallengesRepository(val context:Context) {
     }
     suspend fun updateRepositoy(challenge: Challenges){
         withContext(Dispatchers.IO){
-            challengesDao.updateInventory(challenge)
+            challengesDao.updateChallenge(challenge)
         }
     }
 

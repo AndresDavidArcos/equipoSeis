@@ -40,7 +40,7 @@ class challenges : Fragment() {
     }
     private fun observerListInventory() {
         challengesViewModel.getListInvetory()
-        challengesViewModel.listInventory.observe(viewLifecycleOwner){ lista->
+        challengesViewModel.listChallenge.observe(viewLifecycleOwner){ lista->
             val recycler = binding.recyclerview
             val layoutManager = LinearLayoutManager(context)
             recycler.layoutManager = layoutManager
