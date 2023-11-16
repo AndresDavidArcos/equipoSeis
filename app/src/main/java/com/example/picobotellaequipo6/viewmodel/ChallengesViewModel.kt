@@ -19,8 +19,11 @@ class ChallengesViewModel(application: Application):AndroidViewModel(application
     val listInventory: LiveData<MutableList<Challenges>> get() = _listInventory
 
 
-
-
+    fun saveInventory(challenges: Challenges){
+        viewModelScope.launch {
+            challengesRepository.saveInventory(challenges)
+        }
+    }
 
     fun getListInvetory(){
         viewModelScope.launch {

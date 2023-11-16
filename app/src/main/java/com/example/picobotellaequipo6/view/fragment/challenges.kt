@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.FragmentChallengesBinding
-import com.example.picobotellaequipo6.databinding.FragmentHomeBinding
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.view.adapter.ChallengesAdapter
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
@@ -53,25 +54,63 @@ class challenges : Fragment() {
 
     private fun controladores() {
 //        recycler()
+        alertDia()
+
     }
-    fun recycler(){
+//    var textoIngresado:String,
+    private fun alertDia(){
+        binding.fbagregar.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Agregar reto")
+
+            val input = EditText(requireContext())
+            builder.setView(input)
+
+            builder.setPositiveButton("Guardar") { _, _ ->
+                val textoIngresado = input.text.toString()
+                if (textoIngresado.isNotEmpty()){
+                    Toast.makeText(requireContext(),textoIngresado,Toast.LENGTH_LONG).show()
+                    saveChallenge(textoIngresado)
+                    observerListInventory()
+                }
+
+            }
+
+            builder.setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.cancel()
+            }
+
+            val alertDialog = builder.create()
+            alertDialog.show()
+        }
+    }
+
+    private fun saveChallenge(eltexto:String){
+        val name = eltexto
+        val challengeV = Challenges(name=name)
+        challengesViewModel.saveInventory(challengeV)
+//        Toast.makeText(requireContext(),"Articuasor",Toast.LENGTH_SHORT).show()
+//        findNavController().popBackStack()
+    }
+
+//    fun recycler(){
 //        val listaR =  mutableListOf(
-//            Challenges("1"),
-//            Challenges("2"),
-//            Challenges("3"),
-//            Challenges("4"),
-//            Challenges("5"),
-//            Challenges("6"),
-//            Challenges("7"),
-//            Challenges("8"),
-//            Challenges("9"),
-//            Challenges("10")
+//            Challenges(1,"1"),
+//            Challenges(1,"2"),
+//            Challenges(1,"3"),
+//            Challenges(1,"4"),
+//            Challenges(1,"5"),
+//            Challenges(1,"6"),
+//            Challenges(1,"7"),
+//            Challenges(1,"8"),
+//            Challenges(1,"9"),
+//            Challenges(1,"10")
 //        )
 //        val recycler = binding.recyclerview
 //        recycler.layoutManager = LinearLayoutManager(context)
 //        val adapter = ChallengesAdapter(listaR)
 //        recycler.adapter = adapter
 //        adapter.notifyDataSetChanged()
-    }
+//    }
 
 }
