@@ -6,5 +6,5 @@ data class Pokemon(
     @SerializedName("name")
     val name:String,
     @SerializedName("img")
-    val img:String
+    val img:String,
 )
