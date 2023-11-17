@@ -87,7 +87,7 @@ class home : Fragment() {
                 }
 
                 R.id.share -> {
-                    val text = "Oye, prueba esta increíble aplicación\n\n$APP_URL"
+                    val text = "App pico botella.\nSolo los valientes lo juegan !!\n$APP_URL"
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.type = "text/plain"
                     intent.putExtra(Intent.EXTRA_TEXT, text)
