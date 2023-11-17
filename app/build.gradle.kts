@@ -52,6 +52,14 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation("androidx.navigation:navigation-common:$navVersion")
 
+    // retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //dagger hilt
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-android-compiler:2.47")
+
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
