@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.viewModels
@@ -50,6 +51,7 @@ class home : Fragment() {
         rotateBottleListener()
         playMusic()
         toolBarListeners()
+        challengesViewModel.getPokemons()
     }
 
     override fun onDestroyView() {
@@ -85,7 +87,7 @@ class home : Fragment() {
                 }
 
                 R.id.share -> {
-                    val text = "Oye, prueba esta increíble aplicación\n\n$APP_URL"
+                    val text = "App pico botella.\nSolo los valientes lo juegan !!\n$APP_URL"
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.type = "text/plain"
                     intent.putExtra(Intent.EXTRA_TEXT, text)
@@ -191,13 +193,17 @@ class home : Fragment() {
 
         challengesViewModel.getListInvetory()
         challengesViewModel.listInventory.observe(viewLifecycleOwner) { lista ->
-            binding.texto.text = lista.shuffled()[0].name
+            if (lista.isEmpty()) {
+                binding.texto.text = "No hay retos disponibles"
+            }else{
+                binding.texto.text = lista.shuffled()[0].name
+            }
         }
 
-        challengesViewModel.getPokemons()
         challengesViewModel.listPokemons.observe(viewLifecycleOwner){ lista ->
             val pokemon = lista.shuffled()[0]
-            Glide.with(binding.root.context).load(pokemon.img.toString()).into(binding.image)
+            val url = pokemon.img.replace("http://", "https://")
+            Glide.with(binding.root.context).load(url).into(binding.image)
         }
 
         val alertDialog = AlertDialog.Builder(requireContext()).create()
@@ -207,6 +213,11 @@ class home : Fragment() {
 
         binding.btnAceptar.setOnClickListener {
             alertDialog.dismiss()
+            if(soundIsOn){
+                mediaPlayer.setVolume(1.0f, 1.0f)
+            }else{
+                mediaPlayer.setVolume(0.0f, 0.0f)
+            }
         }
         alertDialog.show()
     }
