@@ -34,7 +34,7 @@
         android:id="@+id/editChallenge"
         android:name="com.example.picobotellaequipo6.view.fragment.EditChallenge"
         android:label="EditChallenge"
-        tools:layout="@layout/fragment_edit_challenge" >
+        tools:layout="@layout/dialog_edit_challenge" >
         <action
             android:id="@+id/action_editChallenge_to_challenges2"
             app:destination="@id/challenges2" />

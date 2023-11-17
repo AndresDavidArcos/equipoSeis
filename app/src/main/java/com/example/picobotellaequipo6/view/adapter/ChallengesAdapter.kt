@@ -8,10 +8,10 @@ import com.example.picobotellaequipo6.databinding.ChallengesInventoryBinding
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.view.viewholder.ChallengesViewHolder
 
-class ChallengesAdapter(private val listChallenges:MutableList<Challenges>):RecyclerView.Adapter<ChallengesViewHolder>() {
+class ChallengesAdapter(private val listChallenges:MutableList<Challenges>, private val navController: NavController):RecyclerView.Adapter<ChallengesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChallengesViewHolder {
         val binding = ChallengesInventoryBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-        return ChallengesViewHolder(binding)
+        return ChallengesViewHolder(binding, navController)
     }
 
     override fun onBindViewHolder(holder: ChallengesViewHolder, position: Int) {

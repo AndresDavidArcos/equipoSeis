@@ -40,11 +40,11 @@ class challenges : Fragment() {
     }
     private fun observerListInventory() {
         challengesViewModel.getListInvetory()
-        challengesViewModel.listChallenge.observe(viewLifecycleOwner){ lista->
+        challengesViewModel.listChallenge.observe(viewLifecycleOwner){ challenge ->
             val recycler = binding.recyclerview
             val layoutManager = LinearLayoutManager(context)
             recycler.layoutManager = layoutManager
-            val adapter = ChallengesAdapter(lista)
+            val adapter = ChallengesAdapter(challenge, findNavController())
             recycler.adapter = adapter
             adapter.notifyDataSetChanged()
         }

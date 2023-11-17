@@ -7,25 +7,23 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import com.example.picobotellaequipo6.databinding.FragmentEditChallengeBinding
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.picobotellaequipo6.R
+import com.example.picobotellaequipo6.databinding.DialogEditChallengeBinding
 
 class EditChallenge : DialogFragment() {
-    private lateinit var binding: FragmentEditChallengeBinding
+    private lateinit var binding: DialogEditChallengeBinding
     private val challengeViewModel: ChallengesViewModel by viewModels()
     private lateinit var receivedChallenge: Challenges
 
     override fun onCreateDialog(
         savedInstanceState: Bundle?
     ): Dialog {
-        binding = FragmentEditChallengeBinding.inflate(LayoutInflater.from(context))
+        binding = DialogEditChallengeBinding.inflate(LayoutInflater.from(context))
 
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
@@ -37,13 +35,13 @@ class EditChallenge : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataInventory()
+        dataChallenge()
         controladores()
     }
 
-    private fun dataInventory(){
+    private fun dataChallenge(){
         val receivedBundle = arguments
-        receivedChallenge = receivedBundle?.getSerializable("dataChallenge") as Challenges
+        receivedChallenge = receivedBundle?.getSerializable("reto") as Challenges
         binding.etChallengeName.setText(receivedChallenge.name)
 
     }
