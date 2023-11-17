@@ -8,4 +8,5 @@
     <string name="reglas_de_juego">Reglas de Juego</string>
     <string name="retos">Retos</string>
     <string name="add_ch">Agregar retos</string>
+    <string name="escr_ret">Escriba el reto</string>
 </resources>
