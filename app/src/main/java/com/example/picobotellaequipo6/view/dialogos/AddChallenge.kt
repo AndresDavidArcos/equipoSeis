@@ -6,68 +6,56 @@ import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.picobotellaequipo6.databinding.AddChallengeBinding
 import com.google.android.material.button.MaterialButton
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class AddChallengeDialog (private val challengesViewModel: ChallengesViewModel) {
-    fun showDialog(context: Context,func: () -> Unit) {
+class AddChallengeDialog(private val challengesViewModel: ChallengesViewModel) {
+    fun showDialog(context: Context, func: () -> Unit) {
         val inflater = LayoutInflater.from(context)
         val binding = AddChallengeBinding.inflate(inflater)
         val alertDialog = AlertDialog.Builder(context).create()
         alertDialog.setCancelable(false)
         alertDialog.setView(binding.root)
 
-        binding.btnSave.isEnabled = false
-        updateButtonColor(binding.btnSave.isEnabled, binding.btnSave)
-
+        binding.guardar.isEnabled = false
+        colorBoton(binding.guardar.isEnabled, binding.guardar)
         binding.eT.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                binding.btnSave.isEnabled = s.toString().isNotEmpty()
-                updateButtonColor(binding.btnSave.isEnabled, binding.btnSave)
+                binding.guardar.isEnabled = s.toString().isNotEmpty()
+                colorBoton(binding.guardar.isEnabled, binding.guardar)
             }
-
         })
-
-        binding.btnCancel.setOnClickListener {
+        binding.cancelar.setOnClickListener {
             alertDialog.dismiss()
             func()
         }
-
-        binding.btnSave.setOnClickListener {
-            saveChallenge(binding.eT.text.toString())
-            func()
-            alertDialog.dismiss()
-
+        binding.guardar.setOnClickListener {
+            saveChallenge(binding.eT.text.toString(), func, alertDialog)
         }
-
         alertDialog.show()
-
     }
 
-    private fun saveChallenge(description: String) {
-        val challenge = Challenges(name = description)
-        challengesViewModel.saveInventory(challenge)
+    private fun saveChallenge(description: String, func: () -> Unit, alertDialog: AlertDialog) {
+        GlobalScope.launch(Dispatchers.Main) {
+            challengesViewModel.saveInventory(Challenges(name = description))
+            func()
+            alertDialog.dismiss()
+        }
     }
 
-    private fun updateButtonColor(isEnabled: Boolean, btnSave: MaterialButton) {
-        if (isEnabled) {
-            btnSave.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#ff9d00")) // Color naranja
+    private fun colorBoton(enable: Boolean, guardar: MaterialButton) {
+        if (enable) {
+            guardar.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#ff9d00"))
         } else {
-            btnSave.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#808080")) // Color gris
+            guardar.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#808080"))
         }
     }
 }
