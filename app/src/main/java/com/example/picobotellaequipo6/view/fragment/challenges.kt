@@ -30,7 +30,7 @@ class challenges : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.contentToolbar.backToolbar.setOnClickListener{ findNavController().popBackStack() }
+        binding.contentToolbar.backToolbar.setOnClickListener { findNavController().popBackStack() }
         controladores()
         observerViewModel()
     }
@@ -38,84 +38,39 @@ class challenges : Fragment() {
     private fun observerViewModel() {
         observerListInventory()
     }
+
     private fun observerListInventory() {
         challengesViewModel.getListInvetory()
-        challengesViewModel.listInventory.observe(viewLifecycleOwner){ lista->
+        challengesViewModel.listInventory.observe(viewLifecycleOwner) { lista ->
             val recycler = binding.recyclerview
             val layoutManager = LinearLayoutManager(context)
             recycler.layoutManager = layoutManager
-            val adapter = ChallengesAdapter(lista)
+            val reversedList: MutableList<Challenges> = lista.toMutableList().asReversed()
+            val adapter = ChallengesAdapter(reversedList)
             recycler.adapter = adapter
             adapter.notifyDataSetChanged()
+
+
+//            Toast.makeText(requireContext(),"aymamamia",Toast.LENGTH_LONG).show()
         }
+//        Toast.makeText(requireContext(),"ObserverListInvenroty",Toast.LENGTH_LONG).show()
+
 
     }
 
     private fun controladores() {
 //        recycler()
+        observerViewModel()
         alertDia()
 
     }
-//    var textoIngresado:String,
-    private fun alertDia(){
-    val addChallengeDialog = AddChallengeDialog(challengesViewModel)
-    binding.fbagregar.setOnClickListener {
-        Toast.makeText(requireContext(),"aaa",Toast.LENGTH_LONG).show()
-        addChallengeDialog.showDialog(binding.root.context)
-    }
-//        binding.fbagregar.setOnClickListener {
-//            val builder = AlertDialog.Builder(requireContext())
-//            builder.setTitle("Agregar reto")
-//
-//            val input = EditText(requireContext())
-//            builder.setView(input)
-//            builder.setCancelable(false)
-////            if (input.text.toString().isNotEmpty()){
-//            builder.setPositiveButton("Guardar") { _, _ ->
-//                val textoIngresado = input.text.toString()
-//                if (textoIngresado.isNotEmpty()){
-//                    Toast.makeText(requireContext(),textoIngresado,Toast.LENGTH_LONG).show()
-//                    saveChallenge(textoIngresado)
-//                    observerListInventory()
-//                }
-//
-//            }
-//
-//            builder.setNegativeButton("Cancelar") { dialog, _ ->
-//                dialog.cancel()
-//            }
-//
-//            val alertDialog = builder.create()
-//            alertDialog.show()
-//        }
-    }
 
-    private fun saveChallenge(eltexto:String){
-        val name = eltexto
-        val challengeV = Challenges(name=name)
-        challengesViewModel.saveInventory(challengeV)
-//        Toast.makeText(requireContext(),"Articuasor",Toast.LENGTH_SHORT).show()
-//        findNavController().popBackStack()
+    private fun alertDia() {
+        val addChallengeDialog = AddChallengeDialog(challengesViewModel)
+        binding.fbagregar.setOnClickListener {
+            addChallengeDialog.showDialog(binding.root.context, this::observerListInventory)
+
+        }
+
     }
-
-//    fun recycler(){
-//        val listaR =  mutableListOf(
-//            Challenges(1,"1"),
-//            Challenges(1,"2"),
-//            Challenges(1,"3"),
-//            Challenges(1,"4"),
-//            Challenges(1,"5"),
-//            Challenges(1,"6"),
-//            Challenges(1,"7"),
-//            Challenges(1,"8"),
-//            Challenges(1,"9"),
-//            Challenges(1,"10")
-//        )
-//        val recycler = binding.recyclerview
-//        recycler.layoutManager = LinearLayoutManager(context)
-//        val adapter = ChallengesAdapter(listaR)
-//        recycler.adapter = adapter
-//        adapter.notifyDataSetChanged()
-//    }
-
 }

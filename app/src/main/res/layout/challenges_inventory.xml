@@ -33,7 +33,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_coffee_24"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    android:paddingTop="5dp"
+                    android:paddingStart="5dp"/>
                 <ImageView
                     android:id="@+id/delete_challenge"
                     android:layout_width="wrap_content"
@@ -41,6 +43,8 @@
                     android:src="@drawable/delete_challenge"
                     card_view:layout_constraintTop_toTopOf="parent"
                     card_view:layout_constraintEnd_toEndOf="parent"
+                    android:paddingEnd="5dp"
+                    android:paddingTop="5dp"
                     android:contentDescription="Borrar" />
                 <ImageView
                     android:id="@+id/edit_challenge"
@@ -48,6 +52,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit_challenge"
                     card_view:layout_constraintTop_toTopOf="parent"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
                     card_view:layout_constraintEnd_toStartOf="@+id/delete_challenge"
                     android:contentDescription="Editar" />
 
