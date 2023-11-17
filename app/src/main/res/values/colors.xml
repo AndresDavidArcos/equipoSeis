@@ -10,6 +10,7 @@
     <color name="white">#FDF9F9</color>
     <color name="orange">#ff9d00</color>
     <color name="brigthness_black">#404040</color>
-    <color name="dark_orange">#FC3D00</color>
+    <color name="dark_orange">#FD5F20</color>
+    <color name="orangeBT">#FB511A</color>
     <color name="dark_red">#A12E2E</color>
 </resources>

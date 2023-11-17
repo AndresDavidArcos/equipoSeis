@@ -14,7 +14,7 @@ import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
 
 class AddChallengeDialog (private val challengesViewModel: ChallengesViewModel) {
-    fun showDialog(context: Context) {
+    fun showDialog(context: Context,func: () -> Unit) {
         val inflater = LayoutInflater.from(context)
         val binding = AddChallengeBinding.inflate(inflater)
         val alertDialog = AlertDialog.Builder(context).create()
@@ -24,7 +24,7 @@ class AddChallengeDialog (private val challengesViewModel: ChallengesViewModel) 
         binding.btnSave.isEnabled = false
         updateButtonColor(binding.btnSave.isEnabled, binding.btnSave)
 
-        binding.etInsertChallenge.addTextChangedListener(object : TextWatcher {
+        binding.eT.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -41,15 +41,15 @@ class AddChallengeDialog (private val challengesViewModel: ChallengesViewModel) 
         })
 
         binding.btnCancel.setOnClickListener {
-            Toast.makeText(context, "Se ha cancelado la accion", Toast.LENGTH_SHORT).show()
             alertDialog.dismiss()
+            func()
         }
 
         binding.btnSave.setOnClickListener {
-            saveChallenge(binding.etInsertChallenge.text.toString())
-            Toast.makeText(context, "Reto adicionado", Toast.LENGTH_SHORT).show()
+            saveChallenge(binding.eT.text.toString())
+            func()
             alertDialog.dismiss()
-//            onClose.invoke()
+
         }
 
         alertDialog.show()
@@ -62,10 +62,9 @@ class AddChallengeDialog (private val challengesViewModel: ChallengesViewModel) 
     }
 
     private fun updateButtonColor(isEnabled: Boolean, btnSave: MaterialButton) {
-        // Cambia el color del botón btnSave según su estado de habilitación
         if (isEnabled) {
             btnSave.backgroundTintList =
-                ColorStateList.valueOf(Color.parseColor("#FF3A06")) // Color naranja
+                ColorStateList.valueOf(Color.parseColor("#ff9d00")) // Color naranja
         } else {
             btnSave.backgroundTintList =
                 ColorStateList.valueOf(Color.parseColor("#808080")) // Color gris

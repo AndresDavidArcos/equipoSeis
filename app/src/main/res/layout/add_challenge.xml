@@ -26,30 +26,31 @@
 
             <TextView
                 android:id="@+id/tvTitle"
+                android:text="@string/add_ch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Agregar retos"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/etInsert_challenge"
+                app:layout_constraintBottom_toTopOf="@+id/eT"
                 app:layout_constraintTop_toTopOf="@+id/dialog_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <EditText
-                android:id="@+id/etInsert_challenge"
+                android:id="@+id/eT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:hint="Escriba el reto"
-                android:backgroundTint="@color/orange"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/dark_orange"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                 app:layout_constraintBottom_toTopOf="@+id/btnSave"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +69,7 @@
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/orange"
-                app:layout_constraintTop_toBottomOf="@+id/etInsert_challenge"
+                app:layout_constraintTop_toBottomOf="@+id/eT"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
@@ -77,18 +78,17 @@
                 android:id="@+id/btnCancel"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Cancelar"
-                android:textAllCaps="false"
                 android:layout_marginTop="50dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginEnd="48dp"
                 android:layout_marginBottom="20dp"
-                android:textColor="@color/white"
                 android:backgroundTint="@color/orange"
-                app:layout_constraintTop_toBottomOf="@+id/etInsert_challenge"
-                app:layout_constraintEnd_toStartOf="@+id/btnSave"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintEnd_toStartOf="@+id/btnSave"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eT" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
