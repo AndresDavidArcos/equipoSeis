@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Agregar reto"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <!-- Caja de texto -->
+            <EditText
+                android:id="@+id/etChallengeName"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_margin="16dp"
+                android:hint="Escriba el reto"
+                android:backgroundTint="@color/dark_orange" />
+
+            <!-- Botones -->
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etChallengeName"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginTop="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="60dp"
+                    android:text="Cancelar"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/dark_orange"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/btnSaveChallenge"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/btnCancel"
+                    android:layout_alignParentRight="true"
+                    android:text="Guardar"
+                    android:backgroundTint="@color/button_text_color"
+                    android:enabled="false"
+                    android:textAllCaps="false" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

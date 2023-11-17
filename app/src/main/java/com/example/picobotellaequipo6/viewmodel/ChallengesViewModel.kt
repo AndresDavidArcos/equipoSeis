@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.repository.ChallengesRepository
@@ -25,10 +24,16 @@ class ChallengesViewModel(application: Application):AndroidViewModel(application
         }
     }
 
+
     fun getListInvetory(){
         viewModelScope.launch {
-            _listInventory.value = challengesRepository.getListInventory()
+            _listChallenge.value = challengesRepository.getListInventory()
 
+        }
+    }
+    fun updateChallenge(challenge: Challenges){
+        viewModelScope.launch {
+            challengesRepository.updateRepositoy(challenge)
         }
     }
 }
