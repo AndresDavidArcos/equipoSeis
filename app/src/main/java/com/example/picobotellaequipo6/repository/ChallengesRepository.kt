@@ -10,6 +10,12 @@ import kotlinx.coroutines.withContext
 class ChallengesRepository(val context:Context) {
     private var  challengesDao: ChallengesDao = ChallengesDB.getDatabase(context).challengesDao()
 
+
+    suspend fun saveInventory(challenges: Challenges){
+        withContext(Dispatchers.IO){
+            challengesDao.saveInventory(challenges)
+        }
+    }
     suspend fun getListInventory():MutableList<Challenges>{
         return withContext(Dispatchers.IO){
             challengesDao.getListInventory()

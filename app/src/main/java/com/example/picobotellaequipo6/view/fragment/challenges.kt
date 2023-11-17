@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.FragmentChallengesBinding
-import com.example.picobotellaequipo6.databinding.FragmentHomeBinding
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.view.adapter.ChallengesAdapter
+import com.example.picobotellaequipo6.view.dialogos.AddChallengeDialog
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
 
 class challenges : Fragment() {
@@ -30,7 +30,7 @@ class challenges : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.contentToolbar.backToolbar.setOnClickListener{ findNavController().popBackStack() }
+        binding.contentToolbar.backToolbar.setOnClickListener { findNavController().popBackStack() }
         controladores()
         observerViewModel()
     }
@@ -38,40 +38,39 @@ class challenges : Fragment() {
     private fun observerViewModel() {
         observerListInventory()
     }
+
     private fun observerListInventory() {
         challengesViewModel.getListInvetory()
-        challengesViewModel.listChallenge.observe(viewLifecycleOwner){ challenge ->
+        challengesViewModel.listInventory.observe(viewLifecycleOwner) { lista ->
             val recycler = binding.recyclerview
             val layoutManager = LinearLayoutManager(context)
             recycler.layoutManager = layoutManager
-            val adapter = ChallengesAdapter(challenge, findNavController())
+            val reversedList: MutableList<Challenges> = lista.toMutableList().asReversed()
+            val adapter = ChallengesAdapter(reversedList)
             recycler.adapter = adapter
             adapter.notifyDataSetChanged()
+
+
+//            Toast.makeText(requireContext(),"aymamamia",Toast.LENGTH_LONG).show()
         }
+//        Toast.makeText(requireContext(),"ObserverListInvenroty",Toast.LENGTH_LONG).show()
+
 
     }
 
     private fun controladores() {
 //        recycler()
-    }
-    fun recycler(){
-//        val listaR =  mutableListOf(
-//            Challenges("1"),
-//            Challenges("2"),
-//            Challenges("3"),
-//            Challenges("4"),
-//            Challenges("5"),
-//            Challenges("6"),
-//            Challenges("7"),
-//            Challenges("8"),
-//            Challenges("9"),
-//            Challenges("10")
-//        )
-//        val recycler = binding.recyclerview
-//        recycler.layoutManager = LinearLayoutManager(context)
-//        val adapter = ChallengesAdapter(listaR)
-//        recycler.adapter = adapter
-//        adapter.notifyDataSetChanged()
+        observerViewModel()
+        alertDia()
+
     }
 
+    private fun alertDia() {
+        val addChallengeDialog = AddChallengeDialog(challengesViewModel)
+        binding.fbagregar.setOnClickListener {
+            addChallengeDialog.showDialog(binding.root.context, this::observerListInventory)
+
+        }
+
+    }
 }
