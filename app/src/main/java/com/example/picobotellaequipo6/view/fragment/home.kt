@@ -9,19 +9,22 @@ import android.graphics.Color
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.picobotellaequipo6.R
 import com.example.picobotellaequipo6.databinding.FragmentHomeBinding
+import com.example.picobotellaequipo6.databinding.ShowChallengeBinding
+import com.example.picobotellaequipo6.utils.Constants.APP_URL
+import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
 import kotlin.random.Random
 
 class home : Fragment() {
@@ -31,7 +34,7 @@ class home : Fragment() {
     private var currentRotation = 0f
     private var isAnimating = false
     private var soundIsOn = false
-    private var url = "https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es"
+    private val challengesViewModel: ChallengesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,12 +80,12 @@ class home : Fragment() {
 
                 R.id.favorite -> {
                     val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
+                    i.data = Uri.parse(APP_URL)
                     startActivity(i)
                 }
 
                 R.id.share -> {
-                    val text = "Oye, prueba esta increíble aplicación\n\n$url"
+                    val text = "Oye, prueba esta increíble aplicación\n\n$APP_URL"
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.type = "text/plain"
                     intent.putExtra(Intent.EXTRA_TEXT, text)
@@ -156,9 +159,7 @@ class home : Fragment() {
         }
         countdownAnimator.doOnEnd {
             binding.countdown.text = ""
-            /*
-                        showRandomChallenge()
-            */
+            showRandomChallenge()
         }
         countdownAnimator.start()
     }
@@ -177,6 +178,33 @@ class home : Fragment() {
         }
 
         anim.start()
+    }
+
+
+    private fun showRandomChallenge() {
+        val inflater = LayoutInflater.from(requireContext())
+        val binding = ShowChallengeBinding.inflate(inflater)
+
+        challengesViewModel.getListInvetory()
+        challengesViewModel.listInventory.observe(viewLifecycleOwner) { lista ->
+            binding.texto.text = lista.shuffled()[0].name
+        }
+
+        challengesViewModel.getPokemons()
+        challengesViewModel.listPokemons.observe(viewLifecycleOwner){ lista ->
+            val pokemon = lista.shuffled()[0]
+            Glide.with(binding.root.context).load(pokemon.img.toString()).into(binding.image)
+        }
+
+        val alertDialog = AlertDialog.Builder(requireContext()).create()
+        alertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        alertDialog.setCancelable(false)
+        alertDialog.setView(binding.root)
+
+        binding.btnAceptar.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
     }
 
 }
