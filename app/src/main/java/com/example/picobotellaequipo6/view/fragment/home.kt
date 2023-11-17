@@ -134,7 +134,10 @@ class home : Fragment() {
                 .rotation(currentRotation)
                 .setDuration(3000)
                 .setListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(animation: Animator) {}
+                    override fun onAnimationStart(animation: Animator) {
+                        mediaPlayer.setVolume(0.0f, 0.0f)
+                        binding.botonGirarBotella.visibility = View.GONE;
+                    }
 
                     override fun onAnimationEnd(animation: Animator) {
                         isAnimating = false
@@ -159,6 +162,7 @@ class home : Fragment() {
         }
         countdownAnimator.doOnEnd {
             binding.countdown.text = ""
+            binding.botonGirarBotella.visibility = View.VISIBLE;
             showRandomChallenge()
         }
         countdownAnimator.start()

@@ -9,7 +9,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.model.Pokemon
 import com.example.picobotellaequipo6.repository.ChallengesRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ChallengesViewModel(application: Application):AndroidViewModel(application) {
     val context = getApplication<Application>()
@@ -21,9 +23,13 @@ class ChallengesViewModel(application: Application):AndroidViewModel(application
     private val _listPokemons = MutableLiveData<MutableList<Pokemon>>()
     val listPokemons: LiveData<MutableList<Pokemon>> = _listPokemons
 
-    fun saveInventory(challenges: Challenges){
-        viewModelScope.launch {
+    suspend fun saveInventory(challenges: Challenges) {
+        withContext(Dispatchers.IO) {
             challengesRepository.saveInventory(challenges)
+            // Fetch the updated list from the repository
+            val updatedList = challengesRepository.getListInventory()
+            // Update the LiveData
+            _listInventory.postValue(updatedList)
         }
     }
 
