@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.picobotellaequipo6.databinding.FragmentChallengesBinding
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.view.adapter.ChallengesAdapter
+import com.example.picobotellaequipo6.view.dialogos.AddChallengeDialog
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
 
 class challenges : Fragment() {
@@ -59,30 +58,36 @@ class challenges : Fragment() {
     }
 //    var textoIngresado:String,
     private fun alertDia(){
-        binding.fbagregar.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Agregar reto")
-
-            val input = EditText(requireContext())
-            builder.setView(input)
-
-            builder.setPositiveButton("Guardar") { _, _ ->
-                val textoIngresado = input.text.toString()
-                if (textoIngresado.isNotEmpty()){
-                    Toast.makeText(requireContext(),textoIngresado,Toast.LENGTH_LONG).show()
-                    saveChallenge(textoIngresado)
-                    observerListInventory()
-                }
-
-            }
-
-            builder.setNegativeButton("Cancelar") { dialog, _ ->
-                dialog.cancel()
-            }
-
-            val alertDialog = builder.create()
-            alertDialog.show()
-        }
+    val addChallengeDialog = AddChallengeDialog(challengesViewModel)
+    binding.fbagregar.setOnClickListener {
+        Toast.makeText(requireContext(),"aaa",Toast.LENGTH_LONG).show()
+        addChallengeDialog.showDialog(binding.root.context)
+    }
+//        binding.fbagregar.setOnClickListener {
+//            val builder = AlertDialog.Builder(requireContext())
+//            builder.setTitle("Agregar reto")
+//
+//            val input = EditText(requireContext())
+//            builder.setView(input)
+//            builder.setCancelable(false)
+////            if (input.text.toString().isNotEmpty()){
+//            builder.setPositiveButton("Guardar") { _, _ ->
+//                val textoIngresado = input.text.toString()
+//                if (textoIngresado.isNotEmpty()){
+//                    Toast.makeText(requireContext(),textoIngresado,Toast.LENGTH_LONG).show()
+//                    saveChallenge(textoIngresado)
+//                    observerListInventory()
+//                }
+//
+//            }
+//
+//            builder.setNegativeButton("Cancelar") { dialog, _ ->
+//                dialog.cancel()
+//            }
+//
+//            val alertDialog = builder.create()
+//            alertDialog.show()
+//        }
     }
 
     private fun saveChallenge(eltexto:String){
