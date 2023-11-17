@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.picobotellaequipo6.model.Challenges
 import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
@@ -42,7 +43,7 @@ class EditChallenge : DialogFragment() {
     private fun dataChallenge(){
         val receivedBundle = arguments
         receivedChallenge = receivedBundle?.getSerializable("reto") as Challenges
-        binding.etChallengeName.setText(receivedChallenge.name)
+        binding.etChallengeName.setText(receivedChallenge.name, TextView.BufferType.EDITABLE)
 
     }
 
