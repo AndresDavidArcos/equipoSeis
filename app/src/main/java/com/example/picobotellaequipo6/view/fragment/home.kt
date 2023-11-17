@@ -20,11 +20,17 @@ import android.widget.Toast
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.picobotellaequipo6.R
+import com.example.picobotellaequipo6.databinding.FragmentChallengesBinding
 import com.example.picobotellaequipo6.databinding.FragmentHomeBinding
+import com.example.picobotellaequipo6.model.Challenges
+import com.example.picobotellaequipo6.view.adapter.ChallengesAdapter
+import com.example.picobotellaequipo6.viewmodel.ChallengesViewModel
 import kotlin.random.Random
 
 class home : Fragment() {
+    private val challengesViewModel: ChallengesViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var spinningMediaPlayer: MediaPlayer
@@ -38,6 +44,7 @@ class home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
+        observerListInventory()
         return binding.root
     }
 
@@ -161,6 +168,13 @@ class home : Fragment() {
             */
         }
         countdownAnimator.start()
+    }
+    private fun observerListInventory() {
+        challengesViewModel.getListInvetory()
+        challengesViewModel.listInventory.observe(viewLifecycleOwner) { lista ->
+            binding.countdown.setText(lista.shuffled()[0].name)
+
+        }
     }
 
     private fun blinkingBtnEffect() {
