@@ -18,13 +18,25 @@ class ChallengesViewModel(application: Application):AndroidViewModel(application
 
     val listInventory: LiveData<MutableList<Challenges>> get() = _listInventory
 
+    private val _progresState = MutableLiveData(false)
+    val progresState: LiveData<Boolean> = _progresState
 
-
-
-
-    fun getListInvetory(){
+    fun getListChallenge(){
         viewModelScope.launch {
             _listInventory.value = challengesRepository.getListInventory()
+
+        }
+    }
+
+    fun deleteChallenge(challenge: Challenges) {
+        viewModelScope.launch {
+            _progresState.value = true
+            try {
+                challengesRepository.deleteInventory(challenge)
+                _progresState.value = false
+            } catch (e: Exception) {
+                _progresState.value = false
+            }
 
         }
     }

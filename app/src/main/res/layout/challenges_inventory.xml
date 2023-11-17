@@ -43,7 +43,7 @@
                 <!--                    card_view:layout_constraintTop_toTopOf="parent"-->
                 <!--                    card_view:layout_constraintStart_toStartOf="parent"/>-->
                 <ImageView
-                    android:id="@+id/delete_challenge"
+                    android:id="@+id/deleteChallenge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/delete_challenge"
@@ -51,12 +51,12 @@
                     card_view:layout_constraintEnd_toEndOf="parent"
                     android:contentDescription="Borrar" />
                 <ImageView
-                    android:id="@+id/edit_challenge"
+                    android:id="@+id/editChallenge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit_challenge"
                     card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:layout_constraintEnd_toStartOf="@+id/delete_challenge"
+                    card_view:layout_constraintEnd_toStartOf="@+id/deleteChallenge"
                     android:contentDescription="Editar" />
 
                 <!--                <TextView-->

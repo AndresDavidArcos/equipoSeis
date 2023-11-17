@@ -16,4 +16,10 @@ class ChallengesRepository(val context:Context) {
         }
     }
 
+    suspend fun deleteInventory(challenge: Challenges){
+        withContext(Dispatchers.IO){
+            challengesDao.deleteChallenge(challenge)
+        }
+    }
+
 }
